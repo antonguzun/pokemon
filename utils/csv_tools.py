@@ -1,26 +1,21 @@
 import csv
-from distutils.util import strtobool
-from typing import Callable
+from typing import Callable, Tuple
 
-from utils.pokemon_point_editor import constraint_pokemon
+from utils.constraints import constraint_pokemon_effects, constraint_pokemon_types
 
 
 class BaseCSVReader:
     filepath = None
     ignore_first_row = True
-    constraints_types = None
-    constraint_fun = None
+    constraints = None
 
-    def __init__(self, filepath: str, constraint_fun: Callable = None):
+    def __init__(self, filepath: str, constraints: Tuple[Callable] = None):
         self.filepath = filepath
-        self.constraint_fun = constraint_fun or self.constraint_fun
+        self.constraint_fun = constraints or self.constraints
 
-    def fix_types(self, row: list) -> list:
-        for i in range(len(self.constraints_types)):
-            if self.constraints_types[i] is bool:
-                row[i] = bool(strtobool(row[i]))
-            else:
-                row[i] = self.constraints_types[i](row[i])
+    def apply_constraints(self, row: list):
+        for constraint_fun in self.constraints:
+            row = constraint_fun(row)
         return row
 
     def reader_gen(self):
@@ -31,28 +26,14 @@ class BaseCSVReader:
                 if self.ignore_first_row and row[0] == 1:
                     continue
 
-                row = self.fix_types(row[1])
-                row = self.constraint_fun(row) if self.constraint_fun else row
+                row = self.apply_constraints(row[1])
+
                 if row is None:
                     continue
+
                 yield row
 
 
 class PokemonCSVReader(BaseCSVReader):
     ignore_first_row = True
-    constraints_types = (
-        int,
-        str,
-        str,
-        str,
-        int,
-        int,
-        int,
-        int,
-        int,
-        int,
-        int,
-        int,
-        bool,
-    )
-    constraint_fun = constraint_pokemon
+    constraints = (constraint_pokemon_types, constraint_pokemon_effects)
