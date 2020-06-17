@@ -1,0 +1,12 @@
+#,Name,Type 1,Type 2,Total,HP,Attack,Defense,Sp. Atk,Sp. Def,Speed,Generation,Legendary
+1,TestPokemon1,Grass,Poison,318,45,49,49,65,65,45,1,False
+2,TestPokemon2,Grass,Poison,405,60,62,63,80,80,60,1,True
+3,TestPokemon3,Ghost,Poison,999,99,99,99,80,80,60,1,False
+4,TestPokemon4,Steel,Poison,405,100,62,63,80,80,60,1,False
+5,TestPokemon5,Fire,Poison,405,10,100,63,80,80,60,1,False
+6,TestPokemon6,Bug,Flying,405,10,100,63,80,80,60,1,False
+7,TestPokemon7,Bug,Poison,405,10,100,63,80,80,60,1,False
+8,TestPokemon8,Steel,Flying,405,10,100,63,80,80,60,1,False
+9,G,Steel,Poison,405,10,1,63,80,80,60,1,False
+10,Gamer,Steel,Poison,405,10,1,63,80,80,60,1,False
+11,Gamer3000,Fire,Poison,405,10,1,63,80,80,60,1,False
