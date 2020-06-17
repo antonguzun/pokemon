@@ -2,7 +2,7 @@ from django.db import models
 
 
 class TypePokemon(models.Model):
-    type_name = models.CharField(max_length=16)
+    type_name = models.CharField(max_length=16, unique=True)
 
 
 class Pokemon(models.Model):
@@ -16,9 +16,9 @@ class Pokemon(models.Model):
 
     hp = models.SmallIntegerField(null=False)
     attack = models.SmallIntegerField(null=False)
-    defence = models.SmallIntegerField(null=False)
+    defense = models.SmallIntegerField(null=False)
     spell_attack = models.SmallIntegerField(null=False)
-    spell_defence = models.SmallIntegerField(null=False)
+    spell_defense = models.SmallIntegerField(null=False)
     speed = models.SmallIntegerField(null=False)
 
     generation = models.SmallIntegerField(default=1)
@@ -28,8 +28,8 @@ class Pokemon(models.Model):
         return (
             self.hp
             + self.attack
-            + self.defence
+            + self.defense
             + self.spell_attack
-            + self.spell_defence
+            + self.spell_defense
             + self.speed
         )
