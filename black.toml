@@ -1,0 +1,21 @@
+[tool.black]
+line-length = 115
+py36 = true
+include = '\.pyi?$'
+exclude = '''
+/(
+   _media
+  | _private_media
+  | _static
+  | devops
+  | node_modules
+  | requirements
+  | static
+  | temp
+  | venv
+  | Makefile
+  | package.json
+  | README.md
+  | setup.cfg
+)/
+'''
