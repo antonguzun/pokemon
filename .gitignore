@@ -48,3 +48,4 @@ ddagent-install
 .ipynb
 *.log
 /_private_media/exports/*
+/.run/
