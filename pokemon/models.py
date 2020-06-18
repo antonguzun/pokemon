@@ -4,6 +4,9 @@ from django.db import models
 class TypePokemon(models.Model):
     type_name = models.CharField(max_length=16, unique=True)
 
+    def __str__(self):
+        return self.type_name
+
 
 class Pokemon(models.Model):
     name = models.CharField(max_length=64)
@@ -22,6 +25,9 @@ class Pokemon(models.Model):
     speed = models.SmallIntegerField(null=False)
 
     generation = models.SmallIntegerField(default=1)
+
+    def __str__(self):
+        return f"{self.name}: {self.type_1} and {self.type_2} with total={self.total}"
 
     @property
     def total(self):
