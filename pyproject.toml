@@ -1,17 +1,18 @@
 [tool.poetry]
 name = "poetry-demo"
-version = "0.1.0"
+version = "1.0.9"
 description = ""
 authors = ["author"]
 
 [tool.poetry.dependencies]
-python = "3.8"
+python = "^3.8"
 django = "^3.0.7"
 django-filter = "^2.3.0"
 psycopg2-binary = "^2.8.5"
 django-environ = "^0.4.5"
 djangorestframework = "^3.11.0"
 pytest-django = "^3.9.0"
+uwsgi = "^2.0.19"
 
 [tool.poetry.dev-dependencies]
 pytest = "^3.4"

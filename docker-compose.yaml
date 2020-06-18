@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  pokemon:
+    container_name: pokemon
+#    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8010:8010"
+    command: >
+      sh -c "python3 manage.py migrate &&
+            uwsgi --http 0.0.0.0:8010 --wsgi-file /pokemon/wsgi.py"
+    volumes:
+      - ./logs:/logs
+    depends_on:
+      - database
+    links:
+      - database:database
+    networks:
+      some_network:
+
+
+  database:
+    image: postgres:12-alpine
+    container_name: pokemon.pg_12
+#    restart: always
+    ports:
+      - "5433:5432"
+    env_file:
+      - .env
+    volumes:
+      - database-data:/var/lib/postgresql/data/
+    networks:
+      some_network:
+
+volumes:
+  database-data:
+
+networks:
+  some_network:
