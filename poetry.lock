@@ -298,9 +298,17 @@ optional = false
 python-versions = "*"
 version = "1.4.1"
 
+[[package]]
+category = "main"
+description = "The uWSGI server"
+name = "uwsgi"
+optional = false
+python-versions = "*"
+version = "2.0.19.1"
+
 [metadata]
-content-hash = "24fb265edd86d37c4357e04443ec4a9aa97edc1d0a5c128797655f29ebc7fc36"
-python-versions = "3.8"
+content-hash = "4d93d4946791e63e081c0830301e3df075806a09e5b757d1f47785fcea846b93"
+python-versions = "^3.8"
 
 [metadata.files]
 appdirs = [
@@ -484,4 +492,7 @@ typed-ast = [
     {file = "typed_ast-1.4.1-cp38-cp38-win_amd64.whl", hash = "sha256:fc0fea399acb12edbf8a628ba8d2312f583bdbdb3335635db062fa98cf71fca4"},
     {file = "typed_ast-1.4.1-cp39-cp39-macosx_10_15_x86_64.whl", hash = "sha256:d43943ef777f9a1c42bf4e552ba23ac77a6351de620aa9acf64ad54933ad4d34"},
     {file = "typed_ast-1.4.1.tar.gz", hash = "sha256:8c8aaad94455178e3187ab22c8b01a3837f8ee50e09cf31f1ba129eb293ec30b"},
+]
+uwsgi = [
+    {file = "uWSGI-2.0.19.1.tar.gz", hash = "sha256:faa85e053c0b1be4d5585b0858d3a511d2cd10201802e8676060fd0a109e5869"},
 ]
