@@ -1,13 +1,13 @@
-from django.http import HttpResponse
-from django.views.generic import ListView, View
+from django_filters import rest_framework as filters
+from rest_framework import generics
 
-from django_filters.views import BaseFilterView
-
-
-# class PokemonApiView(BaseFilterView, ListView):
-#     pass
+from pokemon.filters import PokemonFilterSet
+from pokemon.models import Pokemon
+from serializers import PokemonSerializer
 
 
-class PokemonApiView(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse("Hello, World!")
+class PokemonApiView(generics.ListAPIView):
+    queryset = Pokemon.objects.all()
+    serializer_class = PokemonSerializer
+    filter_backends = (filters.DjangoFilterBackend,)
+    filterset_class = PokemonFilterSet
